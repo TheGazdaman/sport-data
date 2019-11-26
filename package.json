@@ -39,6 +39,7 @@
     },
     "dependencies": {
         "materialize-css": "^1.0.0-rc.2",
-        "react-materialize": "^3.5.0"
+        "react-materialize": "^3.5.0",
+        "react-router-dom": "^5.1.2"
     }
 }

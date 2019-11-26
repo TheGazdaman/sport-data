@@ -1,3 +1,21 @@
 @import 'content.scss';
 @import 'navbar.scss';
 @import 'footer.scss';
+
+
+#edit{
+  z-index: 1000;
+  position: fixed;
+  top: 20vh;
+  left: 20vw;
+  width: 20vW;
+}
+
+#add-brand {
+  z-index: 1001;
+  position: fixed;
+  top: 20vh;
+  left: 20vw;
+  width: 30vW;
+  background: #fff;
+}

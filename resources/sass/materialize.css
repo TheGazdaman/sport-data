@@ -4758,6 +4758,10 @@ small {
   transition: box-shadow .25s;
   transition: box-shadow .25s, -webkit-box-shadow .25s;
   border-radius: 2px;
+  border: 1px solid gray;
+  /* height: 200px;
+  width: 100px;
+  margin: 5px; */
 }
 
 .card .card-title {

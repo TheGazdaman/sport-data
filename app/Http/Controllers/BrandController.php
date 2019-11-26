@@ -24,9 +24,15 @@ class BrandController extends Controller
         }
     }
 
-    public function store ()
+    public function store (Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|max:127',
+            'photo_url' => 'max:127' 
+        ]);
        
+        $brands = Brand::create($request->all());
+        return redirect(action('BrandsController@index'));
     }
     
     public function edit($id)
