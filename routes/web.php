@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/index', 'BrandController@index');
+Route::get('/page', 'BrandController@page');
