@@ -20,3 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Route::get('/index', 'BrandController@index');
 Route::get('/page', 'BrandController@page');
+
+Route::post('/brand-save', 'BrandController@store');
+
+Route::post('/brand-delete/{id}', 'BrandController@destroy');
+
+Route::post('/brand-update/{id}', 'BrandController@update');

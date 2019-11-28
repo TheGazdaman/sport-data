@@ -104,14 +104,14 @@ const Content = () => {
                             return <BrandCard key={index} item={item} />;
                         })}
                     </div>
-                    <Route exact path={`/edit/:id`}>
+                    <Route exact path={`/detail/:id`}>
                         <BrandDetail />
                     </Route>
                 </div>
             </div>
         </Router>
         {
-            addBrand && (<CreateBrand />)
+            addBrand && (<CreateBrand setAddBrand={setAddBrand} />)
         }
         </>
     );

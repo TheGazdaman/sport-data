@@ -28,22 +28,40 @@ class BrandController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:127',
-            'photo_url' => 'max:127' 
+            'image_file' => 'required|max:127',
         ]);
        
         $brands = Brand::create($request->all());
-        return redirect(action('BrandsController@index'));
-    }
-    
-    public function edit($id)
-    {
-        //
+        return ['Success'];
+        
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:127',
+            //'image_file' => 'required|max:127',
+        ]);
+
+        $brand = Brand::findOrFail($id);
+        $brand->name = $request->input('name');
+        //$brand->image_file = $request->input('image_file');
+        $brand->save();
+
+        return ['Update success'];
     }
 
-    
+    public function edit($id) 
+    {
+        $brand = Brand::findOrFail($id); 
+        $brand->save();
+    }
+
+    public function destroy($id) 
+    {
+        $brand = Brand::findOrFail($id);
+        $brand->delete();
+
+        return 'Brand deleted';
+    }
 }

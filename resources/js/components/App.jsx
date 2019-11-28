@@ -14,12 +14,8 @@ const App = () => {
                 <Switch>
                     <Route path="/">
                         <Content />
-                        </Route>
-                    {/* <Route exact path={`/edit/:id`}>
-                        <BrandDetail />
-                    </Route>  */}
-
-              </Switch>
+                    </Route>
+                </Switch>
                 <Footer />
             </Router>
         </>
