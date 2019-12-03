@@ -26,3 +26,4 @@ Route::post('/brand-save', 'BrandController@store');
 Route::post('/brand-delete/{id}', 'BrandController@destroy');
 
 Route::post('/brand-update/{id}', 'BrandController@update');
+

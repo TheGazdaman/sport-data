@@ -4,24 +4,27 @@ const CreateBrand = props => {
     const { setAddBrand } = props;
 
     const [formInputValues, setFormInputValues] = useState({
-        name: "Michal",
+        name: "name",
         image_file: "image_file"
     });
 
     console.log("onSubmit", formInputValues);
 
     const handleInputChange = e => {
+        e.preventDefault();
         setFormInputValues({
             ...formInputValues,
             [e.target.id]: e.target.value
         });
     };
+
     const handleSave = () => {
         fetch("/api/brand-save", {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
             },
+
             body: JSON.stringify(formInputValues)
         });
         setAddBrand(false);
@@ -29,31 +32,43 @@ const CreateBrand = props => {
 
     return (
         <>
-            <div id="add-brand">
+            <div className="backPop"></div>
+            <form id="add-brand" className="card">
                 <br />
-                <button onClick={() => setAddBrand(false)}>Close</button>
-                <h1>Add Brand</h1>
+                <button
+                    className="red darken-4 right up"
+                    onClick={() => setAddBrand(false)}
+                >
+                    x
+                </button>
+                <h3 className="center-align">Add Brand</h3>
 
-                <div className="input-field">
+                <div className="input-field s3">
                     <input
                         type="text"
                         id="name"
                         value={formInputValues.name}
                         onChange={handleInputChange}
                     />
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name"></label>
                 </div>
-                <div className="input-field">
+               {/*  <div className="input-field s3">
                     <input
-                        type="text"
+                        type="file" // change for file
                         id="image_file"
-                        value={formInputValues.image_file}
+                        value={formInputValues.file_image}
                         onChange={handleInputChange}
                     />
-                    <label htmlFor="image_file">Image file</label>
-                </div>
-                <button onClick={handleSave}>save</button>
-            </div>
+                    <label htmlFor="image_file"></label>
+                </div> */}
+
+                <button
+                    className="waves-effect waves-light btn light-blue darken-2 btn-block"
+                    onClick={handleSave}
+                >
+                    save
+                </button>
+            </form>
         </>
     );
 };

@@ -28,10 +28,14 @@ class BrandController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:127',
-            'image_file' => 'required|max:127',
+            //'image_file' => 'file|image|max:5000',
         ]);
        
         $brands = Brand::create($request->all());
+        $brand->name = $request->input('name');
+        //$brand->image_file = $request->input('image_file');
+        $brands->save();
+
         return ['Success'];
         
     }
@@ -40,7 +44,7 @@ class BrandController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:127',
-            //'image_file' => 'required|max:127',
+            'image_file' => 'file|image|max:5000',
         ]);
 
         $brand = Brand::findOrFail($id);
@@ -51,11 +55,6 @@ class BrandController extends Controller
         return ['Update success'];
     }
 
-    public function edit($id) 
-    {
-        $brand = Brand::findOrFail($id); 
-        $brand->save();
-    }
 
     public function destroy($id) 
     {

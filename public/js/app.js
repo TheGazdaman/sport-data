@@ -30578,7 +30578,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36742,12 +36742,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _EditBrand_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditBrand.jsx */ "./resources/js/components/EditBrand.jsx");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -36768,29 +36762,6 @@ var BrandDetail = function BrandDetail(props) {
       editOpen = _useState2[0],
       setEditOpen = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    name: item.name
-  }),
-      _useState4 = _slicedToArray(_useState3, 2),
-      updateValues = _useState4[0],
-      setUpdateValues = _useState4[1];
-
-  var handleUpdate = function handleUpdate(e) {
-    console.log("i was clicked");
-    setUpdateValues(_objectSpread({}, updateValues, _defineProperty({}, e.target.id, e.target.value)));
-  };
-  /* 
-  const handleUpdateSave = () => {
-      fetch(`/api/brand-update/${item.id}`, {
-          method: "POST",
-          headers: {
-              "Content-type": "application/json"
-          },
-          body: JSON.stringify(updateValues)
-      });
-  }; */
-
-
   var handleDelete = function handleDelete() {
     fetch("/api/brand-delete/".concat(item.id), {
       method: "POST",
@@ -36802,27 +36773,35 @@ var BrandDetail = function BrandDetail(props) {
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    id: "edit",
-    className: "card col s2"
+    className: "backPop"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "add-brand",
+    style: {
+      height: '10rem'
+    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card-image"
+    className: "card-image waves-effect waves-block waves-light"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "red darken-4 right up",
     onClick: function onClick() {
       return setDetailOpen(false);
     }
-  }, "Close"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+  }, "x"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "image",
     src: "/images/".concat(item.image_file),
-    alt: item.name
+    alt: item.name,
+    style: {
+      width: "3rem"
+    }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-content"
   }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "waves-effect waves-light btn",
+    className: "waves-effect waves-light btn light-blue darken-2 left down",
     onClick: function onClick() {
       return setEditOpen(true);
     }
   }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "waves-effect waves-light btn",
+    className: "waves-effect waves-light btn light-blue darken-2 right down",
     onClick: handleDelete
   }, "Delete"))), editOpen && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EditBrand_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     item: item,
@@ -36930,8 +36909,7 @@ var Content = function Content() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "waves-effect waves-light btn",
-    color: "dark",
+    className: "waves-effect waves-light btn light-blue accent-4",
     onClick: handleBackBtn,
     id: "backBtn"
   }, "Back"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -36939,37 +36917,39 @@ var Content = function Content() {
       padding: "2rem"
     }
   }, currentPage), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "waves-effect waves-light btn",
+    className: "waves-effect waves-light btn light-blue accent-4",
     onClick: handleNextBtn,
     id: "nextBtn"
   }, "Next"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "waves-effect waves-light btn",
+    className: "waves-effect waves-light btn light-blue accent-4 right",
     value: sort,
     onClick: handleAscending
   }, "Ascending"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "waves-effect waves-light btn",
+    className: "waves-effect waves-light btn light-blue accent-4 right",
     value: sort,
     onClick: handleDescending
   }, "Descending"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "waves-effect waves-light btn",
+    className: "waves-effect waves-light btn light-blue accent-2 ",
     onClick: function onClick() {
       return setAddBrand(true);
     }
   }, "Add a new brand"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Browser Select"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    className: "col s12 m3"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     className: "browser-default",
     value: postsPerPage,
     onChange: function onChange(e) {
       setPostsPerPage(e.target.value);
     }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+  }, "  Brands per page:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "36"
   }, "36"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "60"
   }, "60"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "90"
-  }, "90")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    value: "92"
+  }, "92"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, brands.map(function (item, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_brand_BrandCard_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -37019,7 +36999,7 @@ var CreateBrand = function CreateBrand(props) {
   var setAddBrand = props.setAddBrand;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    name: "Michal",
+    name: "name",
     image_file: "image_file"
   }),
       _useState2 = _slicedToArray(_useState, 2),
@@ -37029,6 +37009,7 @@ var CreateBrand = function CreateBrand(props) {
   console.log("onSubmit", formInputValues);
 
   var handleInputChange = function handleInputChange(e) {
+    e.preventDefault();
     setFormInputValues(_objectSpread({}, formInputValues, _defineProperty({}, e.target.id, e.target.value)));
   };
 
@@ -37044,13 +37025,19 @@ var CreateBrand = function CreateBrand(props) {
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    id: "add-brand"
+    className: "backPop"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    id: "add-brand",
+    className: "card"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "red darken-4 right up",
     onClick: function onClick() {
       return setAddBrand(false);
     }
-  }, "Close"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Add Brand"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-field"
+  }, "x"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "center-align"
+  }, "Add Brand"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-field s3"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
     id: "name",
@@ -37058,16 +37045,8 @@ var CreateBrand = function CreateBrand(props) {
     onChange: handleInputChange
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "name"
-  }, "Name")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-field"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "text",
-    id: "image_file",
-    value: formInputValues.image_file,
-    onChange: handleInputChange
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "image_file"
-  }, "Image file")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "waves-effect waves-light btn light-blue darken-2 btn-block",
     onClick: handleSave
   }, "save")));
 };
@@ -37133,21 +37112,25 @@ var EditBrand = function EditBrand(props) {
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "backPop"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "add-brand"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "red darken-4 red darken-4 right up",
     onClick: function onClick() {
       return setEditOpen(false);
     }
-  }, "Close"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Edit brand"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "x"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Edit brand"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "name"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "input-field"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
     id: "name",
     value: updatedValues.name,
     onChange: handleUpdate
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "name"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "waves-effect waves-light btn light-blue darken-2 btn-block",
     onClick: handleUpdatedSave
   }, "save")));
 };
@@ -37171,41 +37154,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var Footer = function Footer() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
-    className: "page-footer"
+    className: "page-footer light-blue darken-4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col l6 s12"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-    className: "white-text"
-  }, "Footer Content"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "grey-text text-lighten-4"
-  }, "You can use rows and columns here to organize your footer content.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col l4 offset-l2 s12"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-    className: "white-text"
-  }, "Links"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "grey-text text-lighten-3",
-    href: "#!"
-  }, "Link 1")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "grey-text text-lighten-3",
-    href: "#!"
-  }, "Link 2")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "grey-text text-lighten-3",
-    href: "#!"
-  }, "Link 3")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "grey-text text-lighten-3",
-    href: "#!"
-  }, "Link 4")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "footer-copyright"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container"
-  }, "\xA9 2014 Copyright Text", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "grey-text text-lighten-4 right",
-    href: "#!"
-  }, "More Links"))));
+    className: "container center-align"
+  }, "\xA9 2019 Copyright Michal Gazd\xEDk")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
@@ -37227,31 +37183,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var Navbar = function Navbar() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "nav-wrapper"
+    className: "nav-wrapper light-blue darken-4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#!",
     className: "brand-logo"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "material-icons"
-  }, "cloud"), "Brands"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "right hide-on-med-and-down"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "sass.html"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "material-icons"
-  }, "search"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "badges.html"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "material-icons"
-  }, "view_module"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "collapsible.html"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "material-icons"
-  }, "refresh"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "mobile.html"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "material-icons"
-  }, "more_vert"))))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/images/logo.svg",
+    style: {
+      width: '8.1rem',
+      marginLeft: '5px'
+    }
+  }), " ")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Navbar);
@@ -37290,21 +37232,28 @@ var BrandCard = function BrandCard(props) {
       setDetailOpen = _useState2[1];
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col s2"
+    className: "col s12 m3"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card-image"
+    className: "card content-card"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "center-align col s2"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "image",
+    className: "image center-align",
     src: "/images/".concat(item.image_file),
-    alt: item.name
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card-content"
-  }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "waves-effect waves-light btn",
+    alt: item.name,
+    style: {
+      width: "3rem"
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-content center-align"
+  }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col s12"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "waves-effect waves-light btn light-blue darken-2 btn-block",
     onClick: function onClick() {
       return setDetailOpen(true);
     }
-  }, "Edit"))), detailOpen && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BrandDetail_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, "Edit")))), detailOpen && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BrandDetail_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     item: item,
     setDetailOpen: setDetailOpen
   }));

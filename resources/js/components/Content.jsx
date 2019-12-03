@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import BrandCard from "./brand/BrandCard.jsx";
 import BrandDetail from "./BrandDetail.jsx";
-import { Router, Switch, Route, Link } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import history from "./../history.js";
-import CreateBrand from './CreateBrand.jsx';
+import CreateBrand from "./CreateBrand.jsx";
 
 const Content = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -11,7 +11,7 @@ const Content = () => {
     const [lastPage, setLastPage] = useState(0);
     const [brands, setBrands] = useState([]);
     const [sort, setSort] = useState("ASC");
-    const [addBrand, setAddBrand] = useState(false)
+    const [addBrand, setAddBrand] = useState(false);
 
     let url = `/api/page?per_page=${postsPerPage}&page=${currentPage}&sort=${sort}`;
 
@@ -43,76 +43,75 @@ const Content = () => {
         setSort("DESC");
     };
 
-
-
     return (
         <>
-        <Router history={history}>
-            <div className="container">
-                <button
-                    className="waves-effect waves-light btn"
-                    color="dark"
-                    onClick={handleBackBtn}
-                    id="backBtn"
-                >
-                    Back
-                </button>
-                <span style={{ padding: "2rem" }}>{currentPage}</span>
-                <button
-                    className="waves-effect waves-light btn"
-                    onClick={handleNextBtn}
-                    id="nextBtn"
-                >
-                    Next
-                </button>
-                <button
-                    className="waves-effect waves-light btn"
-                    value={sort}
-                    onClick={handleAscending}
-                >
-                    Ascending
-                </button>
-
-                <button
-                    className="waves-effect waves-light btn"
-                    value={sort}
-                    onClick={handleDescending}
-                >
-                    Descending
-                </button>
-
-                <button className="waves-effect waves-light btn" onClick={() => setAddBrand(true)}>
-                    Add a new brand
-                </button>
-
+            <Router history={history}>
                 <div className="container">
-                    <label>Browser Select</label>
-                    <select
-                        className="browser-default"
-                        value={postsPerPage}
-                        onChange={e => {
-                            setPostsPerPage(e.target.value);
-                        }}
+                    <button
+                        className="waves-effect waves-light btn light-blue accent-4"
+                        onClick={handleBackBtn}
+                        id="backBtn"
                     >
-                        <option value="36">36</option>
-                        <option value="60">60</option>
-                        <option value="90">90</option>
-                    </select>
+                        Back
+                    </button>
+                    <span style={{ padding: "2rem" }}>{currentPage}</span>
+                    <button
+                        className="waves-effect waves-light btn light-blue accent-4"
+                        onClick={handleNextBtn}
+                        id="nextBtn"
+                    >
+                        Next
+                    </button>
+                    <button
+                        className="waves-effect waves-light btn light-blue accent-4 right"
+                        value={sort}
+                        onClick={handleAscending}
+                    >
+                        Ascending
+                    </button>
 
-                    <div className="row">
-                        {brands.map((item, index) => {
-                            return <BrandCard key={index} item={item} />;
-                        })}
+                    <button
+                        className="waves-effect waves-light btn light-blue accent-4 right"
+                        value={sort}
+                        onClick={handleDescending}
+                    >
+                        Descending
+                    </button>
+
+                    <button
+                        className="waves-effect waves-light btn light-blue accent-2
+                        "
+                        onClick={() => setAddBrand(true)}
+                    >
+                        Add a new brand
+                    </button>
+                    <div className="col s12 m3">
+                       
+                        <select
+                            className="browser-default"
+                            value={postsPerPage}
+                            onChange={e => {
+                                setPostsPerPage(e.target.value);
+                            }}
+                        >  Brands per page:
+                            <option value="36">36</option>
+                            <option value="60">60</option>
+                            <option value="92">92</option>
+                        </select>
                     </div>
-                    <Route exact path={`/detail/:id`}>
-                        <BrandDetail />
-                    </Route>
+                    <div className="container">
+                        <div className="row">
+                            {brands.map((item, index) => {
+                                return <BrandCard key={index} item={item} />;
+                            })}
+                        </div>
+                        <Route exact path={`/detail/:id`}>
+                            <BrandDetail />
+                        </Route>
+                    </div>
                 </div>
-            </div>
-        </Router>
-        {
-            addBrand && (<CreateBrand setAddBrand={setAddBrand} />)
-        }
+            </Router>
+            {addBrand && <CreateBrand setAddBrand={setAddBrand} />}
         </>
     );
 };

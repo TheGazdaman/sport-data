@@ -8,6 +8,7 @@ const EditBrand = props => {
 
     const handleUpdate = e => {
         console.log("handleupdate", handleUpdate);
+
         setUpdatedValues({
             ...updatedValues,
             [e.target.id]: e.target.value
@@ -27,11 +28,17 @@ const EditBrand = props => {
 
     return (
         <>
+            <div className="backPop"></div>
             <div id="add-brand">
                 <br />
-                <button onClick={() => setEditOpen(false)}>Close</button>
-                <h2>Edit brand</h2>
-
+                <button
+                    className="red darken-4 red darken-4 right up"
+                    onClick={() => setEditOpen(false)}
+                >
+                    x
+                </button>
+                <h3>Edit brand</h3>
+                <label htmlFor="name"></label>
                 <div className="input-field">
                     <input
                         type="text"
@@ -39,9 +46,13 @@ const EditBrand = props => {
                         value={updatedValues.name}
                         onChange={handleUpdate}
                     />
-                    <label htmlFor="name"></label>
                 </div>
-                <button onClick={handleUpdatedSave}>save</button>
+                <button
+                    className="waves-effect waves-light btn light-blue darken-2 btn-block"
+                    onClick={handleUpdatedSave}
+                >
+                    save
+                </button>
             </div>
         </>
     );

@@ -1,31 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import EditBrand from "./EditBrand.jsx";
 
 const BrandDetail = props => {
     const { item, setDetailOpen } = props;
 
     const [editOpen, setEditOpen] = useState(false);
-    const [updateValues, setUpdateValues] = useState({
-        name: item.name
-    });
-
-    const handleUpdate = e => {
-        console.log("i was clicked");
-        setUpdateValues({
-            ...updateValues,
-            [e.target.id]: e.target.value
-        });
-    };
-    /* 
-    const handleUpdateSave = () => {
-        fetch(`/api/brand-update/${item.id}`, {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(updateValues)
-        });
-    }; */
 
     const handleDelete = () => {
         fetch(`/api/brand-delete/${item.id}`, {
@@ -39,33 +18,40 @@ const BrandDetail = props => {
 
     return (
         <>
-            <div id="edit" className="card col s2">
-                <div className="card-image">
-                    <button onClick={() => setDetailOpen(false)}>Close</button>
+        <div className="backPop"></div>
+        
+            <div id="add-brand"  style={{ height: '10rem'}}>
+                <div className="card-image waves-effect waves-block waves-light">
+                    <button
+                        className="red darken-4 right up"
+                        onClick={() => setDetailOpen(false)}
+                    >
+                        x
+                    </button>
                     <img
                         className="image"
                         src={`/images/${item.image_file}`}
                         alt={item.name}
+                        style={{ width: "3rem" }}
                     />
                     <div className="card-content">{item.name}</div>
 
                     <button
-                        className="waves-effect waves-light btn"
+                        className="waves-effect waves-light btn light-blue darken-2 left down"
                         onClick={() => setEditOpen(true)}
                     >
                         Edit
                     </button>
                     <button
-                        className="waves-effect waves-light btn"
+                        className="waves-effect waves-light btn light-blue darken-2 right down"
                         onClick={handleDelete}
                     >
                         Delete
                     </button>
                 </div>
             </div>
-            {editOpen && (
-                <EditBrand item={item} setEditOpen={setEditOpen} />
-            )}
+            {editOpen && <EditBrand item={item} setEditOpen={setEditOpen} />}
+       
         </>
     );
 };

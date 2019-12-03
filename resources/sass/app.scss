@@ -1,21 +1,42 @@
-@import 'content.scss';
-@import 'navbar.scss';
-@import 'footer.scss';
-
-
 #edit{
   z-index: 1000;
   position: fixed;
   top: 20vh;
-  left: 20vw;
+  left: 35vw;
   width: 20vW;
 }
 
 #add-brand {
   z-index: 1001;
   position: fixed;
-  top: 20vh;
-  left: 20vw;
+  top: 30vh;
+  left: 35vw;
   width: 30vW;
   background: #fff;
+  padding: 15px;
+}
+
+
+.content-card {
+  height: 10rem;
+  align-items: stretch;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.backPop {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  opacity: 0.3;
+  background: rgb(167, 161, 161);
+}
+
+.new-brand {
+  align-items: stretch;
 }
