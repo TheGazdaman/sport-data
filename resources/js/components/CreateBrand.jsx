@@ -5,7 +5,7 @@ const CreateBrand = props => {
 
     const [formInputValues, setFormInputValues] = useState({
         name: "name",
-        image_file: "image_file"
+        //image_file: "image_file"
     });
 
     console.log("onSubmit", formInputValues);

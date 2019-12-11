@@ -36777,7 +36777,7 @@ var BrandDetail = function BrandDetail(props) {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "add-brand",
     style: {
-      height: '10rem'
+      height: "10rem"
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-image waves-effect waves-block waves-light"
@@ -36999,8 +36999,8 @@ var CreateBrand = function CreateBrand(props) {
   var setAddBrand = props.setAddBrand;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    name: "name",
-    image_file: "image_file"
+    name: "name" //image_file: "image_file"
+
   }),
       _useState2 = _slicedToArray(_useState, 2),
       formInputValues = _useState2[0],
@@ -37094,12 +37094,12 @@ var EditBrand = function EditBrand(props) {
       setUpdatedValues = _useState2[1];
 
   var handleUpdate = function handleUpdate(e) {
-    console.log("handleupdate", handleUpdate);
+    //console.log("handleupdate", handleUpdate);
     setUpdatedValues(_objectSpread({}, updatedValues, _defineProperty({}, e.target.id, e.target.value)));
   };
 
   var handleUpdatedSave = function handleUpdatedSave() {
-    console.log("save", item.id);
+    //console.log("save", item.id);
     fetch("/api/brand-update/".concat(item.id), {
       method: "POST",
       headers: {
@@ -37109,6 +37109,7 @@ var EditBrand = function EditBrand(props) {
         name: updatedValues.name
       })
     });
+    setEditOpen(false);
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

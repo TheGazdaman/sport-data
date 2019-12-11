@@ -55,7 +55,7 @@ class BrandsSeeder extends Seeder
                     file_get_contents($image_url)
                 );
             }
-
+            
             $brands = new Brand;
             $brands->name = $name;
             $brands->image_file = Str::slug($name).'.jpg';

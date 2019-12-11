@@ -18,9 +18,9 @@ const BrandDetail = props => {
 
     return (
         <>
-        <div className="backPop"></div>
-        
-            <div id="add-brand"  style={{ height: '10rem'}}>
+            <div className="backPop"></div>
+
+            <div id="add-brand" style={{ height: "10rem" }}>
                 <div className="card-image waves-effect waves-block waves-light">
                     <button
                         className="red darken-4 right up"
@@ -51,7 +51,6 @@ const BrandDetail = props => {
                 </div>
             </div>
             {editOpen && <EditBrand item={item} setEditOpen={setEditOpen} />}
-       
         </>
     );
 };

@@ -7,7 +7,7 @@ const EditBrand = props => {
     });
 
     const handleUpdate = e => {
-        console.log("handleupdate", handleUpdate);
+        //console.log("handleupdate", handleUpdate);
 
         setUpdatedValues({
             ...updatedValues,
@@ -16,7 +16,7 @@ const EditBrand = props => {
     };
 
     const handleUpdatedSave = () => {
-        console.log("save", item.id);
+        //console.log("save", item.id);
         fetch(`/api/brand-update/${item.id}`, {
             method: "POST",
             headers: {
@@ -24,6 +24,7 @@ const EditBrand = props => {
             },
             body: JSON.stringify({ name: updatedValues.name })
         });
+        setEditOpen(false);
     };
 
     return (

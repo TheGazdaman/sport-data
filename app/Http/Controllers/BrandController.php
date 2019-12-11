@@ -44,7 +44,7 @@ class BrandController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:127',
-            'image_file' => 'file|image|max:5000',
+            //'image_file' => 'file|image|max:5000',
         ]);
 
         $brand = Brand::findOrFail($id);
